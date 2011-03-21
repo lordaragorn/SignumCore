@@ -20,6 +20,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
+#include "gamePCH.h"
 #include "Common.h"
 #include "DatabaseEnv.h"
 #include "WorldPacket.h"
@@ -2009,6 +2010,7 @@ void Spell::SelectEffectTargets(uint32 i, uint32 cur)
             switch(cur)
             {
                 case TARGET_UNIT_CASTER:
+                case TARGET_UNIT_CASTER_UNKNOWN:
                     AddUnitTarget(m_caster, i);
                     break;
                 case TARGET_UNIT_CASTER_FISHING:

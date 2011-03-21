@@ -20,6 +20,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
+#include "gamePCH.h"
 #include "Common.h"
 #include "Object.h"
 #include "Language.h"
@@ -5752,9 +5753,9 @@ void Player::UpdateRating(CombatRating cr)
             break;
         case CR_HIT_TAKEN_SPELL:                            // Implemented in Unit::MagicSpellHitResult
             break;
-        case CR_CRIT_TAKEN_MELEE:                           // Implemented in Unit::RollMeleeOutcomeAgainst (only for chance to crit)
-        case CR_CRIT_TAKEN_RANGED:
-            break;
+        //case CR_CRIT_TAKEN_MELEE:                           // Implemented in Unit::RollMeleeOutcomeAgainst (only for chance to crit)
+        //case CR_CRIT_TAKEN_RANGED:
+        //    break;
         case CR_CRIT_TAKEN_SPELL:                           // Implemented in Unit::SpellCriticalBonus (only for chance to crit)
             break;
         case CR_HASTE_MELEE:                                // Implemented in Player::ApplyRatingMod
@@ -7609,10 +7610,10 @@ void Player::_ApplyItemBonuses(ItemPrototype const *proto, uint8 slot, bool appl
                 ApplyRatingMod(CR_HIT_TAKEN_SPELL, int32(val), apply);
                 break;
             case ITEM_MOD_CRIT_TAKEN_MELEE_RATING:
-                ApplyRatingMod(CR_CRIT_TAKEN_MELEE, int32(val), apply);
+                //ApplyRatingMod(CR_CRIT_TAKEN_MELEE, int32(val), apply);
                 break;
             case ITEM_MOD_CRIT_TAKEN_RANGED_RATING:
-                ApplyRatingMod(CR_CRIT_TAKEN_RANGED, int32(val), apply);
+                //ApplyRatingMod(CR_CRIT_TAKEN_RANGED, int32(val), apply);
                 break;
             case ITEM_MOD_CRIT_TAKEN_SPELL_RATING:
                 ApplyRatingMod(CR_CRIT_TAKEN_SPELL, int32(val), apply);
@@ -7642,14 +7643,12 @@ void Player::_ApplyItemBonuses(ItemPrototype const *proto, uint8 slot, bool appl
                 ApplyRatingMod(CR_HIT_TAKEN_SPELL, int32(val), apply);
                 break;
             case ITEM_MOD_CRIT_TAKEN_RATING:
-                ApplyRatingMod(CR_CRIT_TAKEN_MELEE, int32(val), apply);
+                /*ApplyRatingMod(CR_CRIT_TAKEN_MELEE, int32(val), apply);
                 ApplyRatingMod(CR_CRIT_TAKEN_RANGED, int32(val), apply);
-                ApplyRatingMod(CR_CRIT_TAKEN_SPELL, int32(val), apply);
+                ApplyRatingMod(CR_CRIT_TAKEN_SPELL, int32(val), apply);*/
                 break;
             case ITEM_MOD_RESILIENCE_RATING:
-                ApplyRatingMod(CR_CRIT_TAKEN_MELEE, int32(val), apply);
-                ApplyRatingMod(CR_CRIT_TAKEN_RANGED, int32(val), apply);
-                ApplyRatingMod(CR_CRIT_TAKEN_SPELL, int32(val), apply);
+                ApplyRatingMod(CR_RESILIENCE_PLAYER_DAMAGE_TAKEN, int32(val), apply);
                 break;
             case ITEM_MOD_HASTE_RATING:
                 ApplyRatingMod(CR_HASTE_MELEE, int32(val), apply);
@@ -13595,9 +13594,7 @@ void Player::ApplyEnchantment(Item *item, EnchantmentSlot slot, bool apply, bool
 //                            ApplyRatingMod(CR_CRIT_TAKEN_SPELL, enchant_amount, apply);
 //                            break;
                         case ITEM_MOD_RESILIENCE_RATING:
-                            ApplyRatingMod(CR_CRIT_TAKEN_MELEE, enchant_amount, apply);
-                            ApplyRatingMod(CR_CRIT_TAKEN_RANGED, enchant_amount, apply);
-                            ApplyRatingMod(CR_CRIT_TAKEN_SPELL, enchant_amount, apply);
+                            ApplyRatingMod(CR_RESILIENCE_PLAYER_DAMAGE_TAKEN, enchant_amount, apply);
                             sLog.outDebug("+ %u RESILIENCE", enchant_amount);
                             break;
                         case ITEM_MOD_HASTE_RATING:
@@ -23000,17 +22997,21 @@ uint32 Player::GetBarberShopCost(uint8 newhairstyle, uint8 newhaircolor, uint8 n
 
 void Player::InitGlyphsForLevel()
 {
+    uint8 slot = 0;
     for (uint32 i = 0; i < sGlyphSlotStore.GetNumRows(); ++i)
         if (GlyphSlotEntry const * gs = sGlyphSlotStore.LookupEntry(i))
-            if (gs->Order)
-                SetGlyphSlot(gs->Order - 1, gs->Id);
+            if (gs)
+                SetGlyphSlot(slot++, gs->Id);
 
     uint8 level = getLevel();
     uint32 value = 0;
 
     if (level >= 25)
-        value |= 0x43;
-    //mssing flag for level >= 50 and level >= 75
+        value |= 1 | 2 | 64;
+    if(level >= 50)
+        value |= 4 | 8 | 128;
+    if (level >= 75)
+        value |= 16 | 32 | 256;
 
     SetUInt32Value(PLAYER_GLYPHS_ENABLED, value);
 }

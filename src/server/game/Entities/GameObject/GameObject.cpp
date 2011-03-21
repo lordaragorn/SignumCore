@@ -20,6 +20,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
+#include "gamePCH.h"
 #include "Common.h"
 #include "QuestDef.h"
 #include "GameObjectAI.h"
@@ -1251,7 +1252,7 @@ void GameObject::Use(Unit* user)
             if (player->GetGUID() != GetOwnerGUID())
                 return;
 
-            switch(getLootState())
+            switch (getLootState())
             {
                 case GO_READY:                              // ready for loot
                 {
