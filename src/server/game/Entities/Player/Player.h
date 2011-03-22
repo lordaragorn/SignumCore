@@ -1040,6 +1040,9 @@ class Player : public Unit, public GridObject<Player>
         void SetInWater(bool apply);
 
         bool IsInWater() const { return m_isInWater; }
+
+		bool IsPlayer() const { return m_player; }
+
         bool IsUnderWater() const;
         bool IsFalling() { return GetPositionZ() < m_lastFallZ; }
 
@@ -2735,6 +2738,7 @@ class Player : public Unit, public GridObject<Player>
         int32 m_MirrorTimer[MAX_TIMERS];
         uint8 m_MirrorTimerFlags;
         uint8 m_MirrorTimerFlagsLast;
+		bool m_player;
         bool m_isInWater;
 
         // Current teleport data

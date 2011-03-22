@@ -292,6 +292,13 @@ bool ChatHandler::HandleAccountLockCommand(const char* args)
         return true;
     }
 
+	std::string check = "check";
+
+	if (argstr == check)
+	{
+		return true;
+	}
+
     SendSysMessage(LANG_USE_BOL);
     SetSentErrorMessage(true);
     return false;

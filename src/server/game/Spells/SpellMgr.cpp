@@ -4146,6 +4146,10 @@ void SpellMgr::LoadSpellCustomAttr()
             spellInfo->EffectImplicitTargetB[0] = TARGET_UNIT_TARGET_ENEMY;
             count++;
             break;
+		case 95799:
+            spellInfo->StackAmount = 5;
+            count++;
+            break;
         case 71708: // Empowered Flare
         case 72785: // Empowered Flare
         case 72786: // Empowered Flare
