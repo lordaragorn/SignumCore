@@ -2003,7 +2003,14 @@ public:
 enum eTrainingDummy
 {
     NPC_ADVANCED_TARGET_DUMMY                  = 2674,
-    NPC_TARGET_DUMMY                           = 2673
+    NPC_TARGET_DUMMY                           = 2673,
+
+    SPELL_CHARGE                               = 100,
+    SPELL_IMMOLATE                             = 348,
+    SPELL_EVISCERATE                           = 2098,
+    SPELL_STEADY_SHOT                          = 56641,
+    SPELL_ARCANE_MISSILES                      = 5143,
+    SPELL_JUDGEMENT                            = 20271
 };
 
 class npc_training_dummy : public CreatureScript
@@ -2049,6 +2056,25 @@ public:
         {
             if (uiEntry != NPC_ADVANCED_TARGET_DUMMY && uiEntry != NPC_TARGET_DUMMY)
                 return;
+        }
+
+        void SpellHit(SpellEntry* pSpell, Unit* Caster)
+        {
+            uint32 uiKillCredit = 0;
+
+            switch(pSpell->Id)
+           {
+                case SPELL_CHARGE:
+                case SPELL_IMMOLATE:
+                case SPELL_EVISCERATE:
+                case SPELL_STEADY_SHOT:
+                case SPELL_ARCANE_MISSILES:
+                case SPELL_JUDGEMENT:
+                    uiKillCredit = 44175;
+                    break;
+                default: break;
+            }
+            ((Player*)Caster)->KilledMonsterCredit(uiKillCredit, NULL);
         }
 
         void UpdateAI(const uint32 uiDiff)
