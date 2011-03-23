@@ -1024,7 +1024,7 @@ void Aura::HandleAuraSpecificMods(AuraApplication const * aurApp, Unit * caster,
                   target->ToPlayer()->TeleportTo(obj->GetMapId(),obj->GetPositionX(),obj->GetPositionY(),obj->GetPositionZ(),obj->GetOrientation());
                   target->ToPlayer()->RemoveMovementImpairingAuras();
                 }
-                        break;
+                       break;
                 }
                 break;
             case SPELLFAMILY_PRIEST:
@@ -1040,6 +1040,39 @@ void Aura::HandleAuraSpecificMods(AuraApplication const * aurApp, Unit * caster,
                         caster->CastCustomSpell(target, 63675, &basepoints0, NULL, NULL, true, NULL, GetEffect(0));
                     }
                 }
+				// Archangel(87151)
+				else if (GetId() == 87151)
+				{
+					// shadow
+                    if (Aura* shadow = caster->GetAura(87327))
+						caster->CastSpell(caster, 87153, true);
+					// holy
+                    if (Aura* holy = target->GetAura(87336))
+						caster->CastSpell(caster, 81700, true);
+					// disco
+                    if (Aura* disco = target->GetAura(84732))
+						caster->CastSpell(caster, 81700, true);
+				}
+				// Mind flay
+				else if (GetId() == 15407)
+				{
+					// Evangelism: Rank 1
+                    if (Aura* evan1 = caster->GetAura(81659))
+						caster->CastSpell(caster, 87117, true);
+					// Evangelism: Rank 2
+                    if (Aura* evan2 = caster->GetAura(81662))
+						caster->CastSpell(caster, 87118, true);
+				}
+				// Smite
+				else if (GetId() == 585)
+				{
+					// Evangelism: Rank 1
+                    if (Aura* evan1 = caster->GetAura(81659))
+						caster->CastSpell(caster, 87117, true);
+					// Evangelism: Rank 2
+                    if (Aura* evan2 = target->GetAura(81662))
+						caster->CastSpell(caster, 87118, true);
+				}
                 // Renew
                 else if (GetSpellProto()->SpellFamilyFlags[0] & 0x00000040 && GetEffect(0))
                 {

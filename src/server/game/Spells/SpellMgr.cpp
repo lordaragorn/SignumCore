@@ -4146,11 +4146,11 @@ void SpellMgr::LoadSpellCustomAttr()
             spellInfo->EffectImplicitTargetB[0] = TARGET_UNIT_TARGET_ENEMY;
             count++;
             break;
-		case 81659:
+		case 87117: // Evangelism rank 1
             spellInfo->StackAmount = 5;
             count++;
             break;		
-		case 81662:
+		case 87118: // Evangelism rank 2
             spellInfo->StackAmount = 5;
             count++;
             break;
