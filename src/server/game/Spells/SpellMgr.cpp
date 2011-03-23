@@ -4146,7 +4146,11 @@ void SpellMgr::LoadSpellCustomAttr()
             spellInfo->EffectImplicitTargetB[0] = TARGET_UNIT_TARGET_ENEMY;
             count++;
             break;
-		case 95799:
+		case 81659:
+            spellInfo->StackAmount = 5;
+            count++;
+            break;		
+		case 81662:
             spellInfo->StackAmount = 5;
             count++;
             break;
