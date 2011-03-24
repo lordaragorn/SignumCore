@@ -1062,6 +1062,21 @@ void Aura::HandleAuraSpecificMods(AuraApplication const * aurApp, Unit * caster,
 					// Evangelism: Rank 2
                     if (Aura* evan2 = caster->GetAura(81662))
 						caster->CastSpell(caster, 87118, true);
+
+					// Pain and Suffering: Rank 1
+					if (Aura* evan2 = caster->GetAura(47580)) {
+						if (Aura* swp = target->GetAura(589)) {
+							if (roll_chance_i(30))
+								swp->RefreshDuration();
+						}
+					}
+					// Pain and Suffering: Rank 2
+					if (Aura* evan2 = caster->GetAura(47581)) {
+						if (Aura* swp = target->GetAura(589)) {
+							if (roll_chance_i(60))
+								swp->RefreshDuration();
+						}
+					}
 				}
 				// Smite
 				else if (GetId() == 585)
@@ -1073,6 +1088,7 @@ void Aura::HandleAuraSpecificMods(AuraApplication const * aurApp, Unit * caster,
                     if (Aura* evan2 = target->GetAura(81662))
 						caster->CastSpell(caster, 87118, true);
 				}
+				
                 // Renew
                 else if (GetSpellProto()->SpellFamilyFlags[0] & 0x00000040 && GetEffect(0))
                 {

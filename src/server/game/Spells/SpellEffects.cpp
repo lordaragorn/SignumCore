@@ -2458,7 +2458,7 @@ void Spell::DoCreateItem(uint32 /*i*/, uint32 itemtype)
 
 void Spell::EffectCreateItem(SpellEffIndex effIndex)
 {
-    if (m_spellInfo->EffectItemType[effIndex] == 6948 && unitTarget->ToPlayer()->GetItemByEntry(6948)) //dont create a new hearthstone on homebind if player already has
+	if (m_spellInfo->EffectItemType[effIndex] == 6948 && unitTarget->ToPlayer()->GetItemByEntry(6948)) //dont create a new hearthstone on homebind if player already has
         return;
     DoCreateItem(effIndex,m_spellInfo->EffectItemType[effIndex]);
     ExecuteLogEffectCreateItem(effIndex, m_spellInfo->EffectItemType[effIndex]);
@@ -4062,7 +4062,7 @@ void Spell::SpellDamageWeaponDmg(SpellEffIndex effIndex)
             }
             //Arcane Shot - bonus damage from Ranged Attack Power as Arcane damage
             //UPDATED FOR CATACLYSM:
-            if (m_spellInfo->SpellFamilyFlags[0] & 0x800)
+            if (m_spellInfo->SpellFamilyFlags[0] & 0x000800)
             {
                 // "An instant shot that causes % weapon damage plus (RAP * 0.0483)+289 as Arcane damage."
                 // Arcane shot is not filtered through weapon_total_pct because it is not registered as SPELL_SCHOOL_MASK_NORMAL
@@ -4071,7 +4071,7 @@ void Spell::SpellDamageWeaponDmg(SpellEffIndex effIndex)
             }
             //Aimed Shot - bonus damage from Ranged Attack Power
             //UPDATED FOR CATACLYSM:
-            if (m_spellInfo->SpellFamilyFlags[0] & 0x20000)
+            if (m_spellInfo->SpellFamilyFlags[0] & 0x020000)
             {
                 // "A powerful aimed shot that deals % ranged weapon damage plus (RAP * 0.724)+776."
                 spell_bonus += int32((0.724f*m_caster->GetTotalAttackPowerValue(RANGED_ATTACK)));
@@ -4080,6 +4080,7 @@ void Spell::SpellDamageWeaponDmg(SpellEffIndex effIndex)
             break;
             //Cobra Shot - bonus damage from Ranged Attack Power
             //UPDATED FOR CATACLYSM:
+            //TODO: Add time addition on enemy for serpent sting in scripts function
             if (m_spellInfo->SpellFamilyFlags[2] & 0x400000)
             {
                 // "Deals weapon damage plus (276 + (RAP * 0.017)) in the form of Nature damage and increases the duration of your Serpent Sting on the target by 6 sec. Generates 9 Focus."
@@ -4089,6 +4090,7 @@ void Spell::SpellDamageWeaponDmg(SpellEffIndex effIndex)
             break;
             //Chimera Shot - bonus damage from Ranged Attack Power
             //UPDATED FOR CATACLYSM:
+            //TODO: Add time refresh on enemy for serpent sting in scripts function
             if (m_spellInfo->SpellFamilyFlags[2] & 0x1)
             {
                 // An instant shot that causes ranged weapon damage plus RAP*0.732+1620, refreshing the duration of  your Serpent Sting and healing you for 5% of your total health."
@@ -5374,23 +5376,31 @@ void Spell::EffectScriptEffect(SpellEffIndex effIndex)
                     m_caster->CastSpell(unitTarget, spellId3, true);
                 return;
             }
+        }        
+		
+		case SPELLFAMILY_PRIEST:
+        {
+            switch(m_spellInfo->Id)
+            {
+                // Nightmare Vine
+                case 21562:
+                {
+                    m_caster->CastSpell(unitTarget, 79104, true);
+                    break;
+                }
+            }
+            break;
         }
         case SPELLFAMILY_HUNTER:
         {
-            // cobra shot focus effect + add 6 seconds to serpent sting
+            // cobra shot focus effect (it has its own skill for this)
+            // TODO: add serpent sting time increase by 6 seconds if already active on enemy
             if (m_spellInfo->SpellFamilyFlags[2] & 0x400000)
-            {
-                m_caster->CastSpell(m_caster,91954,true);
-                if (unitTarget->GetAura(1978))
-                    unitTarget->GetAura(1978)->SetDuration((unitTarget->GetAura(1978)->GetDuration() + 6000), true);
-            }
-            // chimera shot health effect + serpent sting refresh
+                m_caster->CastSpell(m_caster,91954,true); 
+            // chimera shot health effect
+            //TODO: add serpent sting refresh effect on enemy if already active on enemy
             if (m_spellInfo->SpellFamilyFlags[2] & 0x1)
-            {
-                m_caster->CastSpell(m_caster,53353,true);
-                if (unitTarget->GetAura(1978))
-                    unitTarget->GetAura(1978)->RefreshDuration();
-            }
+                m_caster->CastSpell(m_caster,53353,true); 
             return;
         }
         case SPELLFAMILY_POTION:
@@ -5729,6 +5739,7 @@ void Spell::EffectApplyGlyph(SpellEffIndex effIndex)
                 }
             }
 
+            player->CastSpell(m_caster, gp->SpellId, true);
             player->SetGlyph(m_glyphIndex, glyph);
             player->SendTalentsInfoData(false);
             player->learnSpell(gp->SpellId, true);
