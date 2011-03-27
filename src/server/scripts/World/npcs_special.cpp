@@ -2631,6 +2631,30 @@ public:
     }
 };
 
+class npc_wounded_heal : public CreatureScript
+{
+public:
+    npc_wounded_heal() : CreatureScript("npc_wounded_heal") { }
+
+    struct npc_wounded_healAI : public ScriptedAI
+    {
+        npc_wounded_healAI(Creature* pCreature) : ScriptedAI(pCreature) {}
+
+        void SpellHit(Unit* Caster, const SpellEntry* pSpell)
+        {
+            if(pSpell->Id == 2061)
+            {
+                ((Player*)Caster)->KilledMonsterCredit(44175, NULL);
+            }
+        }
+    };
+
+    CreatureAI* GetAI(Creature* pCreature) const
+    {
+        return new npc_wounded_healAI(pCreature);
+    }
+};
+
 void AddSC_npcs_special()
 {
     new npc_air_force_bots;
@@ -2661,5 +2685,6 @@ void AddSC_npcs_special()
     new npc_locksmith;
     new npc_tabard_vendor;
     new npc_experience;
+    new npc_wounded_heal;
 }
 

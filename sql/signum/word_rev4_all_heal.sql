@@ -1,0 +1,1 @@
+UPDATE `creature_template` SET `ScriptName`='npc_wounded_heal' WHERE entry IN(44564, 44617, 44857, 44795, 16971, 44405, 47091, 48305, 47057, 45199, 42501);
