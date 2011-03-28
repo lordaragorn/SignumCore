@@ -33,6 +33,7 @@ INSERT INTO `creature_ai_scripts` VALUES (1151901, 11519, 0, 0, 75, 3, 3000, 500
 INSERT INTO `creature_ai_scripts` VALUES (1151902, 11519, 0, 0, 85, 3, 8000, 8000, 16000, 16000, 11, 14873, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Bazzalan - Cast Sinister Strike');
 INSERT INTO `creature_ai_scripts` VALUES (1152001, 11520, 0, 0, 80, 3, 8000, 8000, 8000, 8000, 11, 11970, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Taragaman the Hungerer - Fire Nova');
 INSERT INTO `creature_ai_scripts` VALUES (1152002, 11520, 0, 0, 80, 3, 7000, 7000, 7000, 7000, 11, 18072, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Taragaman the Hungerer - Uppercut');
+INSERT INTO `creature_ai_scripts` VALUES (1132001, 11320, 0, 0, 70, 3, 6000, 6000, 10000, 10000, 11, 18070, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Earthborer - Cast Earthborer Acid');
 
 
 -- BFD
@@ -237,6 +238,54 @@ INSERT INTO `creature_ai_scripts` VALUES(367118, 3671, 6, 0, 100, 2, 0, 0, 0, 0,
 INSERT INTO `creature_ai_scripts` VALUES(367313, 3673, 7, 0, 100, 2, 0, 0, 0, 0, 34, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Lord Serpentis - Data Type 0 on Evade');
 INSERT INTO `creature_ai_scripts` VALUES(367314, 3673, 4, 0, 100, 2, 0, 0, 0, 0, 34, 3, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Lord Serpentis - Data Type 1 on Aggro');
 INSERT INTO `creature_ai_scripts` VALUES(367315, 3673, 6, 0, 100, 2, 0, 0, 0, 0, 34, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Lord Serpentis - Data Type 2 on Death');
+
+-- gnomeregan
+INSERT INTO `creature_ai_scripts` VALUES(621201, 6212, 1, 0, 100, 3, 1000, 1000, 60000, 60000, 11, 11802, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Dark Iron Agent - Summon Dark Iron Land Mine');
+INSERT INTO `creature_ai_scripts` VALUES(622901, 6229, 0, 0, 100, 3, 25000, 25000, 25000, 35000, 11, 5568, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Crowd Pummeler 9-60 - Cast Trample');
+INSERT INTO `creature_ai_scripts` VALUES(622902, 6229, 0, 0, 100, 3, 40000, 40000, 35000, 60000, 11, 10887, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Crowd Pummeler 9-60 - Cast Crowd Pummel');
+INSERT INTO `creature_ai_scripts` VALUES(622903, 6229, 0, 0, 100, 3, 15000, 15000, 15000, 20000, 11, 8374, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Crowd Pummeler 9-60 - Cast Arcing Smash');
+INSERT INTO `creature_ai_scripts` VALUES(623501, 6235, 0, 0, 80, 3, 25000, 25000, 5000, 5000, 11, 11082, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Electrocutioner 6000 - Cast Megavolt');
+INSERT INTO `creature_ai_scripts` VALUES(623502, 6235, 0, 0, 80, 3, 15000, 15000, 8000, 8000, 11, 15605, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Electrocutioner 6000 - Cast Shock');
+INSERT INTO `creature_ai_scripts` VALUES(623503, 6235, 0, 0, 80, 3, 31000, 31000, 11000, 11000, 11, 11085, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Electrocutioner 6000 - Cast Chain Bolt');
+INSERT INTO `creature_ai_scripts` VALUES(639101, 6391, 0, 0, 100, 3, 3000, 5000, 5000, 7000, 11, 11976, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Holdout Warrior - Cast Strike');
+INSERT INTO `creature_ai_scripts` VALUES(639102, 6391, 0, 0, 100, 3, 7000, 9000, 12000, 15000, 11, 12555, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Holdout Warrior - Cast Pummel');
+INSERT INTO `creature_ai_scripts` VALUES(780001, 7800, 0, 0, 100, 3, 15000, 15000, 15000, 35000, 11, 10101, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Mekgineer Thermaplugg - Cast Knock Away');
+INSERT INTO `creature_ai_scripts` VALUES(780002, 7800, 0, 0, 100, 3, 40000, 40000, 40000, 60000, 11, 11130, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Mekgineer Thermaplugg - Cast Knock Away');
+INSERT INTO `creature_ai_scripts` VALUES(780003, 7800, 4, 0, 100, 2, 0, 0, 0, 0, 1, -188, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Mekgineer Thermaplugg - Aggro yell/sound');
+INSERT INTO `creature_ai_scripts` VALUES(780004, 7800, 0, 0, 100, 3, 20000, 20000, 40000, 65000, 1, -189, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Mekgineer Thermaplugg - Combat yell/sound');
+INSERT INTO `creature_ai_scripts` VALUES(780005, 7800, 5, 0, 100, 3, 0, 0, 0, 0, 1, -191, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Mekgineer Thermaplugg - Kill yell/sound');
+INSERT INTO `creature_ai_scripts` VALUES(780006, 7800, 0, 0, 100, 3, 30000, 30000, 30000, 30000, 32, 7915, 4, 2, 32, 7915, 4, 3, 1, -190, 0, 0, 'Mekgineer Thermaplugg - Summon and yell');
+INSERT INTO `creature_ai_scripts` VALUES (null, 6231, 0, 0, 100, 3, 3000, 6000, 7000, 12000, 11, 10855, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Techbot - Cast ');
+INSERT INTO `creature_ai_scripts` VALUES (null, 6231, 0, 0, 100, 3, 3000, 6000, 7000, 12000, 11, 10856, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Techbot - Cast ');
+INSERT INTO `creature_ai_scripts` VALUES (null, 6231, 0, 0, 100, 3, 3000, 6000, 7000, 12000, 11, 10852, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Techbot - Cast ');
+INSERT INTO `creature_ai_scripts` VALUES (null, 6231, 0, 0, 100, 3, 3000, 6000, 7000, 12000, 11, 10858, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Techbot - Cast ');
+INSERT INTO `creature_ai_scripts` VALUES (null, 6221, 0, 0, 100, 3, 3000, 6000, 7000, 12000, 11, 9080, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'leper - Cast ');
+INSERT INTO `creature_ai_scripts` VALUES (null, 6221, 0, 0, 100, 3, 3000, 6000, 7000, 12000, 11, 25712, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'leper - Cast ');
+INSERT INTO `creature_ai_scripts` VALUES (null, 6221, 0, 0, 100, 3, 3000, 6000, 7000, 12000, 11, 6660, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'leper - Cast ');
+INSERT INTO `creature_ai_scripts` VALUES (null, 6221, 4, 0, 100, 2, 0, 0, 0, 0, 11, 7165, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'leper - cast on agro');
+INSERT INTO `creature_ai_scripts` VALUES (null, 4809, 14, 0, 100, 3, 750, 40, 11000, 16000, 11, 10832, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Arcane Nullifier - Cast on self');
+INSERT INTO `creature_ai_scripts` VALUES (null, 4809, 14, 0, 100, 3, 750, 40, 11000, 16000, 11, 10831, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Arcane Nullifier - Cast on self');
+INSERT INTO `creature_ai_scripts` VALUES (null, 6206, 4, 0, 100, 2, 0, 0, 0, 0, 11, 7164, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'mob - cast on agro');
+INSERT INTO `creature_ai_scripts` VALUES (null, 6206, 0, 0, 100, 3, 3000, 6000, 7000, 12000, 11, 87081, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'mob - Cast ');
+INSERT INTO `creature_ai_scripts` VALUES (null, 8035, 4, 0, 100, 2, 0, 0, 0, 0, 11, 4043, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'land mine - cast on agro');
+INSERT INTO `creature_ai_scripts` VALUES (null, 6220, 0, 0, 100, 3, 3000, 6000, 7000, 12000, 11, 8211, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'mob - Cast ');
+INSERT INTO `creature_ai_scripts` VALUES (null, 6329, 4, 0, 100, 2, 0, 0, 0, 0, 11, 8369, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'mob - cast on agro');
+INSERT INTO `creature_ai_scripts` VALUES (null, 6329, 0, 0, 100, 3, 3000, 6000, 7000, 12000, 11, 9798, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'mob - Cast ');
+INSERT INTO `creature_ai_scripts` VALUES (null, 6329, 0, 0, 100, 3, 3000, 6000, 7000, 12000, 11, 92266, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'mob - Cast ');
+INSERT INTO `creature_ai_scripts` VALUES (null, 6329, 0, 0, 100, 3, 3000, 6000, 7000, 12000, 11, 9771, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'mob - Cast ');
+INSERT INTO `creature_ai_scripts` VALUES (null, 6218, 4, 0, 100, 2, 0, 0, 0, 0, 11, 10341, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'mob - cast on agro');
+INSERT INTO `creature_ai_scripts` VALUES (null, 6218, 0, 0, 100, 3, 3000, 6000, 7000, 12000, 11, 81039, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'mob - Cast ');
+INSERT INTO `creature_ai_scripts` VALUES (null, 6224, 0, 0, 100, 3, 3000, 6000, 7000, 12000, 11, 10732, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'mob - Cast ');
+INSERT INTO `creature_ai_scripts` VALUES (null, 6224, 0, 0, 100, 3, 3000, 6000, 7000, 12000, 11, 13398, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'mob - Cast ');
+INSERT INTO `creature_ai_scripts` VALUES (null, 6224, 0, 0, 100, 3, 3000, 6000, 7000, 12000, 11, 10348, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'mob - Cast ');
+INSERT INTO `creature_ai_scripts` VALUES (null, 6222, 0, 0, 100, 3, 3000, 6000, 7000, 12000, 11, 10732, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'mob - Cast ');
+INSERT INTO `creature_ai_scripts` VALUES (null, 6222, 0, 0, 100, 3, 3000, 6000, 7000, 12000, 11, 13398, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'mob - Cast ');
+INSERT INTO `creature_ai_scripts` VALUES (null, 6222, 0, 0, 100, 3, 3000, 6000, 7000, 12000, 11, 10348, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'mob - Cast ');
+INSERT INTO `creature_ai_scripts` VALUES (null, 6234, 0, 0, 100, 3, 3000, 6000, 7000, 12000, 11, 11820, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'mob - Cast ');
+INSERT INTO `creature_ai_scripts` VALUES (null, 6226, 0, 0, 100, 3, 3000, 6000, 7000, 12000, 11, 11970, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'mob - Cast ');
+INSERT INTO `creature_ai_scripts` VALUES (null, 6226, 0, 0, 100, 3, 3000, 6000, 7000, 12000, 11, 10733, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'mob - Cast ');
+INSERT INTO `creature_ai_scripts` VALUES (null, 6227, 0, 0, 100, 3, 3000, 6000, 7000, 12000, 11, 11264, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'mob - Cast ');
+INSERT INTO `creature_ai_scripts` VALUES (null, 6225, 0, 0, 100, 3, 3000, 6000, 7000, 12000, 11, 10346, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'mob - Cast ');
 
 -- Stare texty skryptów
 INSERT INTO `creature_ai_texts` VALUES (-1, 'I see those fools at the Abbey sent some fresh meat for us.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '103');
