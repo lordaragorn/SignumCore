@@ -2631,7 +2631,6 @@ public:
     }
 };
 
-<<<<<<< HEAD
 class npc_wounded_heal : public CreatureScript
 {
 public:
@@ -2647,7 +2646,18 @@ public:
             {
                 ((Player*)Caster)->KilledMonsterCredit(44175, NULL);
             }
-=======
+
+        }
+    };
+
+    CreatureAI* GetAI(Creature* pCreature) const
+    {
+        return new npc_wounded_healAI(pCreature);
+    }
+};
+
+
+
 class npc_ring_of_frost : public CreatureScript
 {
 public:
@@ -2728,25 +2738,19 @@ public:
             me->VisitNearbyObject(5.0f, searcher);
             for (std::list<Unit*>::const_iterator iter = targets.begin(); iter != targets.end(); ++iter)
                 CheckIfMoveInRing(*iter);
->>>>>>> 483b349178b39c5b28768650434eaaedccdc5b42
-        }
+
+		}
     };
 
     CreatureAI* GetAI(Creature* pCreature) const
     {
-<<<<<<< HEAD
-        return new npc_wounded_healAI(pCreature);
-    }
-};
-
-=======
         return new npc_ring_of_frostAI(pCreature);
     }
 };
 
 
 
->>>>>>> 483b349178b39c5b28768650434eaaedccdc5b42
+
 void AddSC_npcs_special()
 {
     new npc_air_force_bots;
@@ -2777,10 +2781,7 @@ void AddSC_npcs_special()
     new npc_locksmith;
     new npc_tabard_vendor;
     new npc_experience;
-<<<<<<< HEAD
     new npc_wounded_heal;
-=======
     new npc_ring_of_frost;
->>>>>>> 483b349178b39c5b28768650434eaaedccdc5b42
 }
 
